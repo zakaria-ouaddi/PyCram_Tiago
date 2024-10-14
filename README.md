@@ -26,9 +26,10 @@ Once you have set up ROS and PyCRAM, you will need to clone two repositories. Fo
    ```
 
 After cloning the repositories, follow the official tutorial to set up TIAGo with ROS:
--[Setting Up TIAGo with ROS](https://wiki.ros.org/Robots/TIAGo/Tutorials/Installation/InstallUbuntuAndROS)
 
-##Launching the Setup
+- [Setting Up TIAGo with ROS](https://wiki.ros.org/Robots/TIAGo/Tutorials/Installation/InstallUbuntuAndROS)
+
+## Launching the Setup
 
 **Once everything is set up, you can launch the necessary components**
 1. Open a terminal and run:
