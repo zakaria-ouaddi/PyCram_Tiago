@@ -1,4 +1,8 @@
+from itertools import count
 from time import sleep
+
+from sympy import posify
+
 from pycram.worlds.bullet_world import BulletWorld
 from pycram.designators.action_designator import *
 from pycram.designators.location_designator import *
@@ -8,7 +12,6 @@ from pycram.datastructures.pose import Pose
 from pycram.process_module import simulated_robot
 from pycram.world_concepts.world_object import Object
 
-
 #creating the world
 world=BulletWorld(WorldMode.GUI)
 
@@ -17,8 +20,9 @@ kitchen=Object('kitchen',ObjectType.ENVIRONMENT,'kitchen.urdf')
 
 
 #adding the robot to the world
-tiago=Object('tiago',ObjectType.ROBOT,'tiago_dual.urdf')
-#pr2=Object('pr2',ObjectType.ROBOT,'pr2.urdf')
+tiago=Object('tiago',ObjectType.ROBOT,'tiago_dual.urdf',pose=Pose([0.08000000000000007,2.26 ,0.0],[-0.0,0.0,0.390120905078732,-0.9207636392802178]))
+pr2=Object('pr2',ObjectType.ROBOT,'pr2.urdf')
+
 
 #add objects to the world
 milk=Object('milk',ObjectType.MILK,'milk.stl',pose=Pose([1.3, 1, 0.93]))
@@ -53,7 +57,7 @@ park_left_arm=ParkArmsAction([Arms.LEFT]).resolve()
 #park_both_arms=ParkArmsAction([Arms.BOTH]).resolve()
 
 
-milk_desig=BelieveObject(names=["milk"])
+milk_desig=BelieveObject(names=["milk"]).resolve()
 jeroen_cup_desig=BelieveObject(names=["jeroen_cup"])
 
 #getting the position of the target objects
@@ -61,10 +65,12 @@ target_milk=milk.get_pose()
 
 #target_jeroen_cup=jeroen_cup.get_pose()
 
+robot=BelieveObject(names=["tiago"]).resolve()
+loc_desc=CostmapLocation(target=milk_desig,reachable_for=robot)
+print(tiago.joints.__len__())
+print(pr2.joints.__len__())
 
-
-
-with simulated_robot:
+'''with simulated_robot:
 
     park_right_arm.perform()
     sleep(1)
@@ -87,7 +93,7 @@ with simulated_robot:
 
     PlaceAction(object_designator_description=milk_desig,target_locations=[Pose([-1.20, 1.0192, 0.9624],
                                                         [0, 0, 0, 1])],arms=[Arms.RIGHT]).resolve().perform()
-    park_right_arm.perform()
+    park_right_arm.perform()'''
 
 
 

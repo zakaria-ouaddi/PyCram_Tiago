@@ -73,6 +73,6 @@ with simulated_robot:
     bowl_trprt = nav_and_det(ObjectType.BOWL, ObjectType.ROBOT, bowl)
     find_and_place(bowl_trprt, 6)
 
-    # transportation using given position
+    # transportation breakfast_cereal using given position
     breakfast_cereal_trprt = nav_and_det(ObjectType.BREAKFAST_CEREAL, ObjectType.ROBOT, breakfast_cereal)
     TransportAction(breakfast_cereal_trprt, [Arms.RIGHT], [Pose([-1.30, 1.6, 0.95])]).resolve().perform()
