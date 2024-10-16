@@ -1,8 +1,4 @@
-from itertools import count
 from time import sleep
-
-from sympy import posify
-
 from pycram.worlds.bullet_world import BulletWorld
 from pycram.designators.action_designator import *
 from pycram.designators.location_designator import *
@@ -20,8 +16,8 @@ kitchen=Object('kitchen',ObjectType.ENVIRONMENT,'kitchen.urdf')
 
 
 #adding the robot to the world
-tiago=Object('tiago',ObjectType.ROBOT,'tiago_dual.urdf',pose=Pose([0.08000000000000007,2.26 ,0.0],[-0.0,0.0,0.390120905078732,-0.9207636392802178]))
-pr2=Object('pr2',ObjectType.ROBOT,'pr2.urdf')
+tiago=Object('tiago',ObjectType.ROBOT,'tiago_dual.urdf')
+#pr2=Object('pr2',ObjectType.ROBOT,'pr2.urdf')
 
 
 #add objects to the world
@@ -67,10 +63,14 @@ target_milk=milk.get_pose()
 
 robot=BelieveObject(names=["tiago"]).resolve()
 loc_desc=CostmapLocation(target=milk_desig,reachable_for=robot)
-print(tiago.joints.__len__())
-print(pr2.joints.__len__())
 
-'''with simulated_robot:
+
+'''
+NOTE!!!
+
+The error occurs when the Tiago robot wants to pick up objects
+'''
+with simulated_robot:
 
     park_right_arm.perform()
     sleep(1)
@@ -93,7 +93,7 @@ print(pr2.joints.__len__())
 
     PlaceAction(object_designator_description=milk_desig,target_locations=[Pose([-1.20, 1.0192, 0.9624],
                                                         [0, 0, 0, 1])],arms=[Arms.RIGHT]).resolve().perform()
-    park_right_arm.perform()'''
+    park_right_arm.perform()
 
 
 
