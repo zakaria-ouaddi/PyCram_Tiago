@@ -59,7 +59,9 @@ With ROS Noetic and PyCRAM set up, you need to clone two repositories into your 
  You are now ready to launch your first script with the TIAGo robot using PyCRAM.
  
  **Step 1: Start PyCharm**
- Open PyCharm from your terminal:
+
+Open PyCharm from your terminal:
+ 
 ```bash
 ~/pycharm-(version)/bin/pycharm.sh
 ```
