@@ -75,8 +75,8 @@ roslaunch pycram ik_and_description.launch
 1. In PyCharm, click on File (top-left corner) and choose Open.
 2. Navigate to your src folder within your workspace and open the pycram folder.
 3. Add the following repository to the project:
-   -TIAGo Robot Work: [PyCRAM_Tiago](https://github.com/zakaria-ouaddi/PyCram_Tiago)
-   -You can add it either by cloning it directly in PyCharm or by downloading and importing it.
+   - TIAGo Robot Work: [PyCRAM_Tiago](https://github.com/zakaria-ouaddi/PyCram_Tiago)
+   - You can add it either by cloning it directly in PyCharm or by downloading and importing it.
 
 **Step 4: Run the Python Files**
 Now, you can start running the Python scripts within PyCharm to interact with the TIAGo robot.
