@@ -83,9 +83,11 @@ roslaunch pycram ik_and_description.launch
    - You can add it either by cloning it directly in PyCharm or by downloading and importing it.
 
 **Step 4: Run the Python Files**
+
 Now, you can start running the Python scripts within PyCharm to interact with the TIAGo robot.
 
 **Additional Tips**
+
 - Always ensure that your ROS environment is correctly sourced before running any ROS-related commands:
 ```bash
 source ~/workspace/ros/devel/setup.bash
