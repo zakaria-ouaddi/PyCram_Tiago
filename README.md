@@ -68,7 +68,7 @@ Open PyCharm from your terminal:
 ***Note***: Replace pycharm-(version) with the specific version folder name, such as pycharm-2024.2.3.
 
 **Step 2: Launch the ROS Server**
-Step 2: Launch the ROS Server
+Open a new terminal and run the following command to launch the ROS server:
 ```bash
 roslaunch pycram ik_and_description.launch
 ```
