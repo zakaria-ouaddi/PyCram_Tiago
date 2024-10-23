@@ -45,7 +45,7 @@ With ROS Noetic and PyCRAM set up, you need to clone this repositorie into your 
    cd ~/workspace/ros/src
    ```
 2. In this src folder, you should already have folders like iai_maps, iai_robots, kdl_ik_services, and pycram. Now, you need to add one more repositorie:
- - **iai_tiago**: This repository contains the essential files for controlling the TIAGo robot.(https://github.com/code-iai/iai_tiago)
+ - [**iai_tiago**]: This repository contains the essential files for controlling the TIAGo robot.(https://github.com/code-iai/iai_tiago)
    ```bash
     git clone git@github.com:code-iai/iai_tiago.git --recursive
    ```
