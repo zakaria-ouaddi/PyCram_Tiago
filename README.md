@@ -37,22 +37,22 @@ After ROS Noetic is installed, the next step is to set up **PyCRAM**, a cognitiv
 
 ### Step 3: Clone the Required Repositories
 
-With ROS Noetic and PyCRAM set up, you need to clone two repositories into your workspace.
+With ROS Noetic and PyCRAM set up, you need to clone this repositorie into your workspace.
 
 1. Open your terminal and navigate to the `src` folder of your workspace. You can do this with the following command:
 
    ```bash
    cd ~/workspace/ros/src
    ```
-2. In this src folder, you should already have folders like iai_maps, iai_robots, kdl_ik_services, and pycram. Now, you need to add two more repositories:
- - **TIAGo Dual Robot**: This repository contains the essential files for controlling the TIAGo robot.
+2. In this src folder, you should already have folders like iai_maps, iai_robots, kdl_ik_services, and pycram. Now, you need to add one more repositorie:
+ - **iai_tiago**: This repository contains the essential files for controlling the TIAGo robot.(https://github.com/code-iai/iai_tiago)
    ```bash
-   git clone https://github.com/pal-robotics/tiago_dual_robot
+    git clone git@github.com:code-iai/iai_tiago.git --recursive
    ```
-- **TIAGo Public Files**: Follow the steps provided in the [TIAGo ROS Setup Guide](https://wiki.ros.org/Robots/TIAGo/Tutorials/Installation/InstallUbuntuAndROS) to set this up.
+
 
 ## Building Your Workspace
-  - After cloning the repositories, it's essential to build your workspace. Always use ***catkin_make*** for this, as it is the build tool used during the PyCRAM setup.
+  - After cloning the repositorie, it's essential to build your workspace. Always use ***catkin_make*** for this, as it is the build tool used during the PyCRAM setup.
 
 ## Launching and Running Your First Python Script with TIAGo and PyCRAM
  
