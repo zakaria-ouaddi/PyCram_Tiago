@@ -20,7 +20,7 @@ bowl=Object('bowl',ObjectType.BOWL,'bowl.stl',pose=Pose([2.4, 2.2, 0.68]))
 spoon=Object('spoon',ObjectType.SPOON,'spoon.stl',pose=Pose([2.5, 2.3, 0.86]))
 jeroen_cup=Object('jeroen_cup',ObjectType.JEROEN_CUP,'jeroen_cup.stl',pose=Pose([0.5, 3, 0.58]))
 
-#adding objects to drawrs
+#adding objects to drawers
 apartment.attach(spoon, 'cabinet10_drawer_top')
 apartment.attach(bowl, 'cabinet10_drawer_middle')
 apartment.attach(jeroen_cup, 'cabinet5_drawer_middle')
@@ -73,7 +73,7 @@ def transport_obj(obj,obj_typ,handle_name,target_pose):
     PlaceAction(obj_desig, [target_pose], [pickup_arm]).resolve().perform()
 
 
-spoon_pose=Pose([4.85, 3.3, 0.8], [0, 0, 1, 1])
+spoon_pose=Pose([4.85, 3.3, 0.73])
 bowl_pose=Pose([2.4, 2.2,0.99])
 jeroen_cup_pose=Pose([2.4, 2.5,0.95])
 
