@@ -100,7 +100,3 @@ with simulated_robot:
 
 
 
-
-
-
-

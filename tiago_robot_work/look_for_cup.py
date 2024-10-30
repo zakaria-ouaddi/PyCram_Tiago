@@ -7,15 +7,17 @@ from pycram.designators.object_designator import *
 from pycram.datastructures.enums import Grasp, WorldMode
 from pycram.designators.motion_designator import *
 
-
+#creating the world
 world=BulletWorld(WorldMode.GUI)
 
+#adding the apartment and the pr2 robot
 apartment=Object('apartment',ObjectType.ENVIRONMENT,'apartment.urdf')
 pr2=Object('pr2',ObjectType.ROBOT,'pr2.urdf',pose=Pose([1.2,2,0]))
 
+#adding the object milk
 milk=Object('milk',ObjectType.MILK,'milk.stl',pose=Pose([2.4, 2.2,1]))
 
-#objects inside drawers
+#adding objects that will be inside drawers
 bowl=Object('bowl',ObjectType.BOWL,'bowl.stl',pose=Pose([2.4, 2.2, 0.68]))
 spoon=Object('spoon',ObjectType.SPOON,'spoon.stl',pose=Pose([2.5, 2.3, 0.86]))
 jeroen_cup=Object('jeroen_cup',ObjectType.JEROEN_CUP,'jeroen_cup.stl',pose=Pose([0.5, 3, 0.58]))
@@ -25,8 +27,10 @@ apartment.attach(spoon, 'cabinet10_drawer_top')
 apartment.attach(bowl, 'cabinet10_drawer_middle')
 apartment.attach(jeroen_cup, 'cabinet5_drawer_middle')
 
+#the position where the robot going to look to pick up the milk object
 pick_pose = Pose([2.4, 2.15, 1])
 
+#BelieveObject: Description for Objects that are only believed in
 robot_desig = BelieveObject(names=["pr2"])
 apartment_desig = BelieveObject(names=["apartment"])
 
@@ -46,8 +50,7 @@ def move_and_detect(obj_type):
 def transport_obj(obj,obj_typ,handle_name,target_pose):
 
     handle_desig = ObjectPart(names=[handle_name], part_of=apartment_desig.resolve())
-    drawer_open_loc = AccessingLocation(handle_desig=handle_desig.resolve(),
-                                        robot_desig=robot_desig.resolve()).resolve()
+    drawer_open_loc = AccessingLocation(handle_desig=handle_desig.resolve(),robot_desig=robot_desig.resolve()).resolve()
 
     NavigateAction([drawer_open_loc.pose]).resolve().perform()
 
@@ -72,7 +75,7 @@ def transport_obj(obj,obj_typ,handle_name,target_pose):
 
     PlaceAction(obj_desig, [target_pose], [pickup_arm]).resolve().perform()
 
-
+#positions for the transporting
 spoon_pose=Pose([4.85, 3.3, 0.73])
 bowl_pose=Pose([2.4, 2.2,0.99])
 jeroen_cup_pose=Pose([2.4, 2.5,0.95])
@@ -87,7 +90,7 @@ with simulated_robot:
     milk_desig=move_and_detect(ObjectType.MILK)
     TransportAction(milk_desig,[Arms.RIGHT],[Pose([4.8, 3.55, 0.8])]).resolve().perform()
 
-
+    #looking for the three objects and transporting them to the giving position
     transport_obj(spoon,ObjectType.SPOON,"handle_cab10_t",spoon_pose)
     transport_obj(bowl,ObjectType.BOWL,"handle_cab10_m",bowl_pose)
     transport_obj(jeroen_cup,ObjectType.JEROEN_CUP,"handle_cab5_m",jeroen_cup_pose)
