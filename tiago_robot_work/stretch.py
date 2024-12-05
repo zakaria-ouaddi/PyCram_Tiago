@@ -42,8 +42,6 @@ The robot then transports the object to a specified position and detaches it fro
 '''
 
 
-
-
 #opening fridge
 @with_simulated_robot
 def open_fridge():
@@ -186,7 +184,7 @@ def transport_cup():
                      [0, 0, 0, 0, 0]).perform()
 
 @with_simulated_robot
-def close_frdige():
+def close_fridge():
     NavigateAction([Pose([0.9, 1.7, 0], [0, 0, -1, 0])]).resolve().perform()
     LookAtAction([Pose([1,3,1])]).resolve().perform()
     time.sleep(2)
@@ -196,6 +194,12 @@ def close_frdige():
                      [0.1, 0.1, 0.1, 0.1, 0.1]).perform()
     apartment.set_joint_position('cabinet3_door_top_left_joint', 0)
     ParkArmsAction([Arms.RIGHT]).resolve().perform()
+
+
+    #current_pos=apartment.get_joint_position('cabinet3_door_top_left_joint')
+    #while current_pos>0:
+     #   current_pos-=0.1
+       # apartment.set_joint_position('cabinet3_door_top_left_joint', current_pos)
 
 @with_simulated_robot
 def close_drawer():
@@ -213,14 +217,21 @@ def close_drawer():
     MoveJointsMotion(['joint_arm_l0', 'joint_arm_l1', 'joint_arm_l2', 'joint_arm_l3', 'joint_arm_l4'],
                      [0.1, 0.1, 0.1, 0.03, 0.04]).perform()
     apartment.set_joint_position('cabinet5_drawer_middle_joint', 0)
+    time.sleep(2)
+    SetGripperAction([Arms.RIGHT], [GripperState.OPEN]).resolve().perform()
+    time.sleep(2)
+    NavigateAction([Pose([1.4,3.05,0],[0,0,-1,1])]).resolve().perform()
+    time.sleep(2)
+    SetGripperAction([Arms.RIGHT], [GripperState.CLOSE]).resolve().perform()
+    NavigateAction([Pose([1.5,2.2,0])]).resolve().perform()
+    time.sleep(2)
+    ParkArmsAction([Arms.RIGHT]).resolve().perform()
 
-
-print(stretch.joint_names)
+#print(stretch.get_joint_limits('joint_arm_l0'))
 with simulated_robot:
-
     open_fridge()
     milk_transporting()
-    close_frdige()
+    close_fridge()
     open_drawer()
     transport_cup()
     close_drawer()
