@@ -69,7 +69,7 @@ Open PyCharm from your terminal:
 
 **Step 2: Launch the ROS Server**
 
-Open a new terminal and run the following command to launch the ROS server:
+Open a new terminal and run the following command to launch the set of nodes defined in ik_and_description file:
 
 ```bash
 roslaunch pycram ik_and_description.launch
